@@ -7,6 +7,8 @@ def bubbleSort(L):
         for j in range(len(L)-1):
             if L[j].age > L[j+1].age:
                 L[j].age, L[j+1].age = L[j+1].age, L[j].age
+                L[j].fName, L[j+1].fName = L[j+1].fName, L[j].fName
+                L[j].lName, L[j+1].lName = L[j+1].lName, L[j].lName
     return L
 
 def load(inputFilePath):
@@ -26,14 +28,16 @@ def load(inputFilePath):
 	return personList
 
 def main():
-	inputFilePath = sys.argv[1]
-	personList = load(inputFilePath)
-	
-	bubbleSort(personList)
-	for i in range(len(personList)):
-		print personList[i].age
+    if len(sys.argv)!= 1:
+        inputFilePath = sys.argv[1]
+        personList = load(inputFilePath)
+
+    	bubbleSort(personList)
+    	for i in range(len(personList)):
+    		print personList[i].lName+ " "+ str(personList[i].age)+ "hello"
+    else:
+        print "Usage -- python PeopleSorter input.txt"
+
+
 
 main()
-
-
-
